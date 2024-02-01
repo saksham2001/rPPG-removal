@@ -7,6 +7,51 @@ The revolutionary remote photoplethysmography (rPPG) technique has enabled intel
 ## Code Description
 This repository contains code for the paper 'Preserving Privacy and Video Quality through Remote Physiological Signal Removal'. This repo contains two packages pyVHR and pyRemoval along with other usage demonstration code. The pyVHR package is the code from https://github.com/phuselab/pyVHR with minor changes to bulk process the videos. pyRemoval is the package developed for this paper that provides modules to process the videos, measure the loss of information and generate the results.
 
+### pyRemoval package structure
+The pyRemoval package is structured as follows:
+```
+pyRemoval
+│
+├─ processing
+│   ├─ __init__.py
+│   ├─ converter.py
+│   │   ├─ apply_filter
+│   │   └─ apply_filter_live
+│   ├─ extract.py
+│   │   ├─ full_roi
+│   │   ├─ facial_roi
+│   │   ├─ selected_facial_roi
+│   │   └─ boilerplate_roi
+│   └─ filters.py
+│       ├─ medianblur
+│       ├─ gaussianblur
+│       ├─ bilateralblur
+│       ├─ gaussiannoise
+│       ├─ localvarnoise
+│       ├─ saltpeppernoise
+│       ├─ poissonnoise
+│       ├─ peppernoise
+│       ├─ specklenoise
+│       ├─ timeblur
+│       ├─ timeblur_sliding
+│       └─ boilerplate_filter
+├─ metrics
+│   ├─ __init__.py
+│   ├─ infoloss.py
+│   │   ├─ mse
+│   │   └─ boilerplate_metric
+│   └─ speed.py
+│       ├─ fps
+│       └─ boilerplate_metric
+└─ utils
+    ├─ __init__.py
+    ├─ image.py
+    │   └─ compute_errors
+    └─ writer.py
+        └─ save2excel
+
+```
+
 ## Setup
 The code is tested in python 3.8+ on MACOS and Linux. Use the following commands to clone the repository and install the dependencies.
 ```Shell
@@ -51,13 +96,16 @@ In this paper we use the LGI-PPGI dataset. The dataset can be downloaded from [h
 ## Building upon the code
 The code is designed to be modular and easy to build upon. The code can be extended to add new filters, test with different regions of interest, and test with new metrics to measure the loss of information. The code can also be extended to process other datasets. We have provided boilerplate code to add new filters, ROIs and metrics. 
 
-* Filters: Create a function in `pyRemoval/processing/filters.py`. The function should take in the image and the parameters as input and return the filtered image. If the filter has a temporal component (relies on multiple frames), then modifications to the `apply_filter` function in `pyRemoval/processing/converter.py` might be required. For boilerplate code, refer to the [`boilerplate_filter`]() and [`boilerplate_filter_temporal`](). After creating your own filter simply change the import statment in your file to test your filter.
-* ROI: Create a function in `pyRemoval/processing/extract.py`. The function should take in the frame and frame dimensions as input and return the region of interest as a mask. For boilerplate code, refer to the [`boilerplate_roi`](). After creating your own ROI function simply change the import statment in your file to test your ROI.
-* Metrics: Create a function in `pyRemoval/processing/metrics.py`. The function should take in the original image and the filtered image as input and return the metric value. For boilerplate code, refer to the [`boilerplate_metric`](). After creating your own metric function simply change the import statment in your file to test your metric.
+* **Filters:** Create a function in `pyRemoval/processing/filters.py`. The function should take in the image and the parameters as input and return the filtered image. If the filter has a temporal component (relies on multiple frames), then modifications to the `apply_filter` function in `pyRemoval/processing/converter.py` might be required. For boilerplate code, refer to the [`boilerplate_filter`]() function. After creating your own filter simply change the import statment in your file to test your filter.
+* **ROI:** Create a function in `pyRemoval/processing/extract.py`. The function should take in the frame and frame dimensions as input and return the region of interest as a mask. For boilerplate code, refer to the [`boilerplate_roi`](). After creating your own ROI function simply change the import statment in your file to test your ROI.
+* **Information Loss Metrics:** Create a function in `pyRemoval/metrics/infoloss.py`. The function should take in the original image and the filtered image as input and return the metric value. For boilerplate code, refer to the [`boilerplate_metric`](). After creating your own metric function simply change the import statment in your file to test your metric.
+* **Speed Metrics:** Create a function in `pyRemoval/metrics/speed.py`. The function requires the previous time and the current time as inputs and return the metric value. For boilerplate code, refer to the [`boilerplate_metric`](). After creating your own metric function simply change the import statment in your file to test your metric.
 
 <!-- ## Citation
 If you use any of the data or resources provided on this page in any of your publications we ask you to cite the following work.
 ```add citation here``` -->
+## Contact
+If you have any questions, please feel free to contact us though email: Saksham Bhutani (sakshambhutani2001@gmail.com) or Mohamed Elgendi (moe.elgendi@hest.ethz.ch)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/saksham2001/rPPG-removal/blob/main/LICENSEs) file for details.
