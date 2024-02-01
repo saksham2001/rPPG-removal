@@ -300,20 +300,3 @@ def boilerplate_filter(frame, filter_params):
 
     # return the processed frame
     pass
-
-def boilerplate_filter_temporal(frames_array, filter_params):
-    '''
-    This function is a boilerplate for the temporal filters to be added that need a array of frames.
-
-    Parameters:
-        frames_array (numpy.ndarray): List of the frames.
-        filter_params (dict): Dictionary containing the parameters for the filter.
-
-    Returns:
-        frame (numpy.ndarray): Processed frame.
-    '''
-    
-    # do the filtering here!
-
-    # return the processed frame
-    pass
