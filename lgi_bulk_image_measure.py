@@ -6,7 +6,7 @@ License: MIT
 '''
 
 from pyRemoval.utils.image import compute_errors
-from pyRemoval.metrics import mse
+from pyRemoval.metrics.infoloss import mse
 from pyRemoval.utils.writer import save2excel
 
 activities = ['resting', 'talking', 'rotation', 'gym']
