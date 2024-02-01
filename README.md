@@ -2,6 +2,7 @@
 
 ## Abstract
 The revolutionary remote photoplethysmography (rPPG) technique has enabled intelligent devices to estimate physiological parameters with remarkable accuracy. However, the continuous and surreptitious recording of individuals by these devices and the collecting of sensitive health data without users’ knowledge or consent raise serious privacy concerns. In response, this study explores frugal methods for modifying facial videos to conceal physiological signals while maintaining image quality. Eleven lightweight modification methods, including blurring operations, additive noises, and time-averaging techniques, were evaluated using five different rPPG techniques across four activities: rest, talking, head rotation, and gym. These rPPG methods require minimal computational resources, enabling real-time implementation on low-compute devices. Our results indicate that the time-averaging sliding frame method achieved the greatest balance between preserving the information within the frame and inducing a heart rate error, with an average error of 22 beats per minute (bpm). Further, the facial region of interest was found to be the most effective and to offer the best trade-off between bpm errors and information loss.
+
 ![pipeline](figures/modification_pipeline.png)
 
 ## Code Description
@@ -53,13 +54,13 @@ pyRemoval
 ```
 
 ## Setup
-The code is tested in python 3.8+ on MACOS and Linux. Use the following commands to clone the repository and install the dependencies.
+The code is tested in python 3.8+ on MacOS and Linux. Use the following commands to clone the repository and install the dependencies.
 ```Shell
 git clone https://github.com/saksham2001/rPPG-removal
 cd rPPG-removal/
 pip install -r requirements.txt
 ```
-**Note"** Please ensure that you do not have the pyVHR python package installed. If you do, please uninstall it using `pip uninstall pyVHR` and use the modified version provided in this repository.
+**Note** Please ensure that you do not have the pyVHR python package installed. If you do, please uninstall it using `pip uninstall pyVHR` and use the modified version provided in this repository.
 
 ## Basic usage
 Run the following code to process a video using one of the filters.
@@ -108,5 +109,5 @@ If you use any of the data or resources provided on this page in any of your pub
 If you have any questions, please feel free to contact us though email: Saksham Bhutani (sakshambhutani2001@gmail.com) or Mohamed Elgendi (moe.elgendi@hest.ethz.ch)
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/saksham2001/rPPG-removal/blob/main/LICENSEs) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/saksham2001/rPPG-removal/blob/main/LICENSE) file for details.
 
