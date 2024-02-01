@@ -33,19 +33,19 @@ filter_params = {'amount': 0.05}
 # Apply filter
 apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func, filter_params)
 ```
-For more detailed demostrations please refer to the [`pyRemoval Demo.ipynb`](https://github.com/saksham2001/rPPG-removal/pyRemoval_Demo.ipynb) notebook
+For more detailed demostrations please refer to the [`pyRemoval Demo.ipynb`](https://github.com/saksham2001/rPPG-removal/blob/main/pyRemoval_Demo.ipynb) notebook
 
 ## Files
 Files that can be used to process the videos from the LGI-PPGI dataset are:
-* [`lgi_bulk_process.py`](https://github.com/saksham2001/lgi_bulk_process.py): This file allows processing the LGI-PPGI dataset, automating the process of applying each filter for all the activities.
-* [`lgi_bulk_image_measure.py`](https://github.com/saksham2001/rPPG-removal/lgi_bulk_image_measure.py): This file allows measuring the loss of information in the images obtained after applying the filters for all the activities.
-* [`lgi_bulk_rppg_estimate.py`](https://github.com/saksham2001/lgi_bulk_rppg_estimate.py): This file allows estimating the rPPG signal from the images obtained after applying the filters for all the activities.
-* [`bulk_fps_measure.py`](https://github.com/saksham2001/bulk_fps_measure.py): This file allows measuring the FPS for applying all the filters.
+* [`lgi_bulk_process.py`](https://github.com/saksham2001/rPPG-removal/blob/main/lgi_bulk_process.py): This file allows processing the LGI-PPGI dataset, automating the process of applying each filter for all the activities.
+* [`lgi_bulk_image_measure.py`](https://github.com/saksham2001/rPPG-removal/blob/main/lgi_bulk_image_measure.py): This file allows measuring the loss of information in the images obtained after applying the filters for all the activities.
+* [`lgi_bulk_rppg_estimate.py`](https://github.com/saksham2001/rPPG-removal/blob/main/lgi_bulk_rppg_estimate.py): This file allows estimating the rPPG signal from the images obtained after applying the filters for all the activities.
+* [`bulk_fps_measure.py`](https://github.com/saksham2001/rPPG-removal/blob/main/bulk_fps_measure.py): This file allows measuring the FPS for applying all the filters.
 
 **Note:** We have tried to make the code agnostic to the dataset. Hence, the code can be used to process any data which is available in the form of videos.
 
 ## Dataset
-In this paper we use the LGI-PPGI dataset. The dataset can be downloaded from [here](https://github.com/partofthestars/LGI-PPGI-DB).
+In this paper we use the LGI-PPGI dataset. The dataset can be downloaded from [https://github.com/partofthestars/LGI-PPGI-DB](https://github.com/partofthestars/LGI-PPGI-DB).
 
 ## Building upon the code
 The code is designed to be modular and easy to build upon. The code can be extended to add new filters, test with different regions of interest, and test with new metrics to measure the loss of information. The code can also be extended to process other datasets. We have provided boilerplate code to add new filters, ROIs and metrics. 
@@ -59,5 +59,5 @@ If you use any of the data or resources provided on this page in any of your pub
 ```add citation here``` -->
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/saksham2001/rPPG-removal/blob/main/LICENSEs) file for details.
 
