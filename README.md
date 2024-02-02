@@ -54,7 +54,7 @@ pyRemoval
 ```
 
 ## Setup
-The code is tested in python 3.8+ on MacOS and Linux. Use the following commands to clone the repository and install the dependencies.
+We recommend using python 3.8+ to run the scripts. Use the following commands to clone the repository and install the dependencies.
 ```Shell
 git clone https://github.com/saksham2001/rPPG-removal
 cd rPPG-removal/
