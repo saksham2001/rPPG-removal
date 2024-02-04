@@ -9,20 +9,33 @@ from pyRemoval.processing.extract import facial_roi
 from pyRemoval.processing.converter import apply_filter_live
 from pyRemoval.metrics.speed import fps
 
+# subject name
+subject_name = 'angelo'
+
+# activities in the LGI-PPGI dataset to be considered
 activities = ['resting', 'talking', 'rotation', 'gym']
 
+# all the filters
 methods = {'medianblur': medianblur, 'gaussianblur': gaussianblur, 'bilateralblur': bilateralblur, 
            'gausiannoise': gaussiannoise, 'saltpeppernoise': saltpeppernoise, 'poissonnoise': poissonnoise, 
            'specklenoise': specklenoise, 'localvarnoise': localvarnoise, 'peppernoise': peppernoise,
            'timebluring': timeblur, 'timeblurwindow': timeblur_sliding}
 
+# parameters for the filters
 parameters = {'medianblur': {'kernel_size': 5}, 'gaussianblur': {'kernel_size': 5}, 'bilateralblur': {'kernel_size': 5},
                 'gausiannoise': {'mean': 0.1, 'sigma': 0.01}, 'saltpeppernoise': {'amount': 0.05}, 'poissonnoise': {}, 'specklenoise': {}, 'localvarnoise': {}, 
                 'peppernoise': {'amount': 0.05}, 'timebluring': {}, 'timeblurwindow': {'window_size': 5}}
 
+# number of frames to process
 frames_to_process = 100
+
+# frame rate
 metric = fps
+
+# region of interest
 roi_func = facial_roi
+
+# display the video
 display = False
 
 if __name__ == '__main__':

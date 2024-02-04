@@ -58,7 +58,7 @@ We recommend using python 3.8+ to run the scripts. Use the following commands to
 ```Shell
 git clone https://github.com/saksham2001/rPPG-removal
 cd rPPG-removal/
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 **Note** Please ensure that you do not have the pyVHR python package installed. If you do, please uninstall it using `pip uninstall pyVHR` and use the modified version provided in this repository.
 

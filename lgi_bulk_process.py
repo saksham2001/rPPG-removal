@@ -5,34 +5,42 @@ Authors: Saksham Bhutani, Mohamed Elgendi and Carlo Menon
 License: MIT
 '''
 
-import cv2
 import os
-import numpy as np
-import matplotlib.pyplot as plt
-from skimage.util import random_noise
-import mediapipe as mp
-import re
 from pyRemoval.processing.converter import apply_filter
 from pyRemoval.processing.filters import *
 from pyRemoval.processing.extract import facial_roi
 
+# path to the LGI-PPGI dataset
+input_location = '/Volumes/Seagate/College/ETH/Work/Data/original/LGI-PPG/'
+
+# path to save the processed videos
+output_location = '/Volumes/Seagate/College/ETH/Work/Data/processed/LGI-PPG/'
+
+# subject name
+subject_name = 'alex'
+
+# all the filters to process the video
 methods = {'medianblur': medianblur, 'gaussianblur': gaussianblur, 'bilateralblur': bilateralblur, 
            'gausiannoise': gaussiannoise, 'saltpeppernoise': saltpeppernoise, 'poissonnoise': poissonnoise, 
            'specklenoise': specklenoise, 'localvarnoise': localvarnoise, 'peppernoise': peppernoise,
            'timebluring': timeblur, 'timeblurwindow': timeblur_sliding}
 
+# parameters for the filters
 parameters = {'medianblur': {'kernel_size': 5}, 'gaussianblur': {'kernel_size': 5}, 'bilateralblur': {'kernel_size': 5},
                 'gausiannoise': {'mean': 0.1, 'sigma': 0.01}, 'saltpeppernoise': {'amount': 0.05}, 'poissonnoise': {}, 'specklenoise': {}, 'localvarnoise': {}, 
                 'peppernoise': {'amount': 0.05}, 'timebluring': {}, 'timeblurwindow': {'window_size': 5}}
 
+# activities in the LGI-PPGI dataset to be considered
 lgi_activity = ['resting', 'talking', 'rotation', 'gym']
+
+# region of interest
+roi_func = facial_roi
 
 if __name__ == '__main__':
 
     for act in lgi_activity:
         print("Processing: " + act, end='\n')
         for meth in list(methods.keys()):
-            output_location = f'/Volumes/Seagate/College/ETH/Work/Data/meta/LGI-PPG/alex/alex_{act}/facial'
 
             # if dir does not exist create directory
             try:
@@ -41,10 +49,17 @@ if __name__ == '__main__':
                 pass
 
             # find avi file in folder
-            path = [pt for pt in os.listdir(f'/Volumes/Seagate/College/ETH/Work/Data/orignal/LGI-PPG Dataset/alex/alex_{act}') if pt.endswith('.avi')]
+            path = [pt for pt in os.listdir(os.input_location.join(input_location, f'{subject_name}/{subject_name}_{act}')) if pt.endswith('.avi')]
 
-            input_path = os.path.join(f'/Volumes/Seagate/College/ETH/Work/Data/orignal/LGI-PPG Dataset/alex/alex_{act}', path[0])
-            output_path = os.path.join(output_location, f'{meth}.avi')
+            input_path = os.path.join(input_location, f'/{subject_name}/{subject_name}_{act}', path[0])
+
+            # if dir does not exist create directory
+            try:
+                os.makedirs(os.output_location.join(output_location, f'{subject_name}/{subject_name}_{act}'))
+            except OSError as e:
+                pass
+            
+            output_path = os.path.join(output_location, f'{subject_name}/{subject_name}_{act}/{meth}.avi')
 
             filter_func = methods[meth]
             print(f'Applying {meth} filter...')
@@ -55,8 +70,6 @@ if __name__ == '__main__':
                 filter_temporal = 'timeblur_sliding'
             else:
                 filter_temporal = False
-
-            roi_func = facial_roi
 
             filter_params = parameters[meth]
 

@@ -20,18 +20,32 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
+# path of the original LGI-PPGI dataset
+input_location = '/Volumes/Seagate/College/ETH/Work/Data/orignal/LGI-PPG Dataset/'
+
+# path to the processed videos
+processed_location = '/Volumes/Seagate/College/ETH/Work/Data/processed/LGI-PPG/'
+
+# path to save the data
+results_location = '/Volumes/Seagate/College/ETH/Work/Data/results/LGI-PPG/'
+
+# subject name
+subject_name = 'alex'
+
 # Plotting: set 'colab' for Google Colaboratory, 'notebook' otherwise
 vhr.plot.VisualizeParams.renderer = 'colab'  # or 'notebook'
 
+# filters to considered
 meth = ["medianblur", "gaussianblur", "bilateralblur", "gausiannoise", "saltpeppernoise", "poissonnoise", "specklenoise",
         "localvarnoise", "peppernoise", "timebluring", "timeblurwindow"]
 
+# rPPG techniques to be used
 techniques = ["CHROM", "POS", "LGI", "GREEN", "ICA"]
 
+# activities to be considered from LGI-PPGI dataset
 activities = ['resting', 'talking', 'rotation', 'gym'] 
 
-# -- LOAD A DATASET
-
+# load dataset
 dataset_name = 'lgi_ppgi'          # the name of the python class handling it 
 video_DIR = '/Volumes/Seagate/College/ETH/Work/Data/orignal/LGI-PPG Dataset/alex/'  # dir containing videos
 BVP_DIR = '/Volumes/Seagate/College/ETH/Work/Data/orignal/LGI-PPG Dataset/alex/'    # dir containing BVPs GT
@@ -450,14 +464,26 @@ if __name__ == '__main__':
             res_meth = []
             for i in range(len(meth)):
                 if meth[i] == 'normal':
-                    path = '/Volumes/Seagate/College/ETH/Work/Data/orignal/LGI-PPG Dataset/alex/alex_'+activities[k]+ '/cv_camera_sensor_stream_handler.avi'
+                    path = os.input_location.join(input_location, f'{subject_name}/{subject_name}_{activities[k]}/cv_camera_sensor_stream_handler.avi')
                 else:
-                    path = '/Volumes/Seagate/College/ETH/Work/Data/meta/LGI-PPG/alex/alex_'+activities[k]+ '/' + meth[i] + '.avi'
+                    # if dir does not exist create directory
+                    try:
+                        os.makedirs(os.processed_location.join(processed_location, f'alex/alex_{activities[k]}'))
+                    except OSError as e:
+                        pass
+
+                    path = os.processed_location.join(processed_location, f'alex/alex_{activities[k]}/{meth[i]}.avi')
 
                 res = pipe(path, meth[i], j, k)
                 res_meth.append(res)
 
             results.append(res_meth)
 
-        plot_errors(results, '/Users/sakshambhutani/Desktop/College/ETH/Work/Experimental/AntiPPG/Results/Datasets/LGI-PPG/alex/alex_'+activities[k]+ '/'+ 'results.xlsx')
+        # if dir does not exist create directory
+        try:
+            os.makedirs(os.results_location.join(results_location,f'{subject_name}/{subject_name}_{activities[k]}'))
+        except OSError as e:
+            pass
+        
+        plot_errors(results, os.results_location.join(results_location,f'{subject_name}/{subject_name}_{activities[k]}/results.xlsx'))
 
