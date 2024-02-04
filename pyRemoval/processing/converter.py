@@ -115,7 +115,7 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
     print('Video saved at: {}'.format(output_path))
 
 
-def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, metric, display, frames_to_process=None):
+def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, metric, display, frames_to_process=None, notebook_mode=False):
     '''
     This function processes a video with a single filter.
 
@@ -127,6 +127,7 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
         metric (function): Metric function to be applied. [If None, metric is not calculated.]
         display (bool): Whether to display the video.
         frames_to_process (int): Number of frames to process. [If None, frames are processed until program is stopped.]
+        notebook_mode (bool): Whether to run in notebook mode.
 
     Returns:
         metric_lst (list): List of metric values. [Only returned if metric is not None]
@@ -153,6 +154,15 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
 
     prev_time = 0
     new_time = 0
+
+    if frames_to_process is not None:
+        if notebook_mode:
+            from tqdm.notebook import tqdm
+        else:
+            from tqdm import tqdm
+
+        pbar = tqdm(total=frames_to_process)
+
 
     # read until end of video
     while cap.isOpened():
@@ -216,13 +226,12 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
 
                 # display the frame
                 cv2.imshow('frame', final_frame)
-            else:
-                if metric is not None:
-                    print('Metric Current: {:.2f} | Metric Avg: {:.2f}'.format(metric_val, avg))
         else:
             break
 
         if frames_to_process is not None:
+            pbar.update(1)
+            pbar.set_description('Metric Current: {:.2f} | Avg: {:.2f}'.format(metric_val, avg), refresh=True)
             if total_frames_proc >= frames_to_process:
                 break
 
