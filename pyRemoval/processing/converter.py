@@ -5,10 +5,9 @@ Authors: Saksham Bhutani, Mohamed Elgendi and Carlo Menon
 License: MIT
 '''
 import cv2
-from tqdm import tqdm
 import time
 
-def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func, filter_params):
+def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func, filter_params, notebook_mode=False):
     '''
     This function processes a video with a single filter.
 
@@ -19,6 +18,7 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
         filter_temporal (string): Name of the temporal filter.
         roi_func (function): ROI function to be applied.
         filter_params (dict): Dictionary containing the parameters for the filter.
+        notebook_mode (bool): Whether to run in notebook mode.
 
     Returns:
         None
@@ -37,7 +37,7 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
     # define codec and create VideoWriter object
     out = cv2.VideoWriter(output_path, 0, input_fps, (frame_width, frame_height))
 
-    total_frames = 0
+    total_frames_proc = 0
 
     if filter_temporal=='timeblur':
         rAvg = 0
@@ -45,6 +45,11 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
         bAvg = 0
     elif filter_temporal=='timeblur_sliding':
         frame_queue = []
+
+    if notebook_mode:
+        from tqdm.notebook import tqdm
+    else:
+        from tqdm import tqdm
 
     # create tqdm progress bar
     with tqdm(total=total_frames) as pbar:
@@ -54,7 +59,7 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
             ret, frame = cap.read()
 
             if ret:
-                total_frames += 1
+                total_frames_proc += 1
 
                 # convert to rgb
                 frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -64,7 +69,7 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
 
                 # if temporal function add to array
                 if filter_temporal=='timeblur':
-                    filter_params = {'total': total_frames,
+                    filter_params = {'total': total_frames_proc,
                                         'rAvg': rAvg,
                                         'gAvg': gAvg,
                                         'bAvg': bAvg}
@@ -73,11 +78,8 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
                 elif filter_temporal=='timeblur_sliding':
                     frame_queue.append(frame)
 
-                    print(filter_params['window_size'])
-
                     if len(frame_queue) > filter_params['window_size']:
                         frame_queue.pop(0)
-                        print(len(frame_queue))
 
                     frame_copy = filter_func(frame_queue, filter_params)
                 else:
@@ -138,7 +140,7 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
 
-    total_frames = 0
+    total_frames_proc = 0
 
     if filter_temporal=='timeblur':
         rAvg = 0
@@ -158,7 +160,7 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
         ret, frame = cap.read()
 
         if ret:
-            total_frames += 1
+            total_frames_proc += 1
 
             # convert to rgb
             frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -168,7 +170,7 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
 
             # if temporal function add to array
             if filter_temporal=='timeblur':
-                filter_params = {'total': total_frames,
+                filter_params = {'total': total_frames_proc,
                                     'rAvg': rAvg,
                                     'gAvg': gAvg,
                                     'bAvg': bAvg}
@@ -177,11 +179,8 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
             elif filter_temporal=='timeblur_sliding':
                 frame_queue.append(frame)
 
-                print(filter_params['window_size'])
-
                 if len(frame_queue) > filter_params['window_size']:
                     frame_queue.pop(0)
-                    print(len(frame_queue))
 
                 frame_copy = filter_func(frame_queue, filter_params)
             else:
@@ -224,7 +223,7 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
             break
 
         if frames_to_process is not None:
-            if total_frames >= frames_to_process:
+            if total_frames_proc >= frames_to_process:
                 break
 
         # if 'q' is pressed, break from the loop
