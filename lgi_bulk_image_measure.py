@@ -23,7 +23,7 @@ results_path = '/Volumes/Seagate/College/ETH/Work/Data/results/LGI-PPG/'
 subject_name = 'angelo'
 
 # activities in the LGI-PPGI dataset to be considered
-activities = ['resting', 'talking', 'rotation', 'gym']
+activities = ['resting', 'talk', 'rotation', 'gym']
 
 # all the filters
 meth = ['normal', 'medianblur', 'gaussianblur', 'bilateralblur', 'gausiannoise', 'saltpeppernoise', 'poissonnoise', 

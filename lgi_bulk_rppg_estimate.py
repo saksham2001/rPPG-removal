@@ -43,7 +43,7 @@ meth = ["medianblur", "gaussianblur", "bilateralblur", "gausiannoise", "saltpepp
 techniques = ["CHROM", "POS", "LGI", "GREEN", "ICA"]
 
 # activities to be considered from LGI-PPGI dataset
-activities = ['resting', 'talking', 'rotation', 'gym'] 
+activities = ['resting', 'talk', 'rotation', 'gym'] 
 
 # load dataset
 dataset_name = 'lgi_ppgi'          # the name of the python class handling it 

@@ -31,7 +31,7 @@ parameters = {'medianblur': {'kernel_size': 5}, 'gaussianblur': {'kernel_size': 
                 'peppernoise': {'amount': 0.05}, 'timebluring': {}, 'timeblurwindow': {'window_size': 5}}
 
 # activities in the LGI-PPGI dataset to be considered
-lgi_activity = ['resting', 'talking', 'rotation', 'gym']
+lgi_activity = ['resting', 'talk', 'rotation', 'gym']
 
 # region of interest
 roi_func = facial_roi
