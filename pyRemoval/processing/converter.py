@@ -152,8 +152,8 @@ def apply_filter_live(filter_func, filter_temporal, roi_func, filter_params, met
 
     metric_lst = []
 
-    prev_time = 0
-    new_time = 0
+    prev_time = time.time()
+    new_time = time.time()
 
     if frames_to_process is not None:
         if notebook_mode:
