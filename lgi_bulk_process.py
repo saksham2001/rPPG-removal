@@ -11,10 +11,10 @@ from pyRemoval.processing.filters import *
 from pyRemoval.processing.extract import facial_roi
 
 # path to the LGI-PPGI dataset
-input_location = '/Volumes/Seagate/College/ETH/Work/Data/original/LGI-PPG/'
+input_location = '/Volumes/Seagate/College/ETH/Work/Data/original/LGI-PPG'
 
 # path to save the processed videos
-output_location = '/Volumes/Seagate/College/ETH/Work/Data/processed/LGI-PPG/'
+output_location = '/Volumes/Seagate/College/ETH/Work/Data/processed/LGI-PPG'
 
 # subject name
 subject_name = 'alex'
@@ -49,13 +49,13 @@ if __name__ == '__main__':
                 pass
 
             # find avi file in folder
-            path = [pt for pt in os.listdir(os.input_location.join(input_location, f'{subject_name}/{subject_name}_{act}')) if pt.endswith('.avi')]
+            path = [pt for pt in os.listdir(os.path.join(input_location, f'{subject_name}/{subject_name}_{act}')) if pt.endswith('.avi')]
 
-            input_path = os.path.join(input_location, f'/{subject_name}/{subject_name}_{act}', path[0])
+            input_path = os.path.join(input_location, f'{subject_name}/{subject_name}_{act}', path[0])
 
             # if dir does not exist create directory
             try:
-                os.makedirs(os.output_location.join(output_location, f'{subject_name}/{subject_name}_{act}'))
+                os.makedirs(os.path.join(output_location, f'{subject_name}/{subject_name}_{act}'))
             except OSError as e:
                 pass
             
@@ -77,4 +77,4 @@ if __name__ == '__main__':
 
             print(f'Filter {meth} applied successfully!', end='\n\n')
 
-        print(f'All filters applied successfully for {act}!', end='\n\n')
+        print(f'\nAll filters applied successfully for {act}!', end='\n\n')

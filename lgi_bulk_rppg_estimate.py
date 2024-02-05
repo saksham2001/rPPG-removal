@@ -464,15 +464,15 @@ if __name__ == '__main__':
             res_meth = []
             for i in range(len(meth)):
                 if meth[i] == 'normal':
-                    path = os.input_location.join(input_location, f'{subject_name}/{subject_name}_{activities[k]}/cv_camera_sensor_stream_handler.avi')
+                    path = os.path.join(input_location, f'{subject_name}/{subject_name}_{activities[k]}/cv_camera_sensor_stream_handler.avi')
                 else:
                     # if dir does not exist create directory
                     try:
-                        os.makedirs(os.processed_location.join(processed_location, f'alex/alex_{activities[k]}'))
+                        os.makedirs(os.path.join(processed_location, f'alex/alex_{activities[k]}'))
                     except OSError as e:
                         pass
 
-                    path = os.processed_location.join(processed_location, f'alex/alex_{activities[k]}/{meth[i]}.avi')
+                    path = os.path.join(processed_location, f'alex/alex_{activities[k]}/{meth[i]}.avi')
 
                 res = pipe(path, meth[i], j, k)
                 res_meth.append(res)
@@ -481,9 +481,14 @@ if __name__ == '__main__':
 
         # if dir does not exist create directory
         try:
-            os.makedirs(os.results_location.join(results_location,f'{subject_name}/{subject_name}_{activities[k]}'))
+            os.makedirs(os.path.join(results_location,f'{subject_name}/{subject_name}_{activities[k]}'))
         except OSError as e:
             pass
         
-        plot_errors(results, os.results_location.join(results_location,f'{subject_name}/{subject_name}_{activities[k]}/results.xlsx'))
+        # if dir does not exist create directory
+        try:
+            os.makedirs(os.path.join(results_location,f'{subject_name}/{subject_name}_{activities[k]}'))
+        except OSError as e:
+            pass
+        plot_errors(results, os.path.join(results_location,f'{subject_name}/{subject_name}_{activities[k]}/results.xlsx'))
 
