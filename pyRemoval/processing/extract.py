@@ -13,6 +13,11 @@ forehead_lmk = [54, 68, 103, 104, 67, 69, 109, 108, 10, 151, 338, 337, 297, 299,
 left_cheek_lmk = [267, 116, 117, 118, 119, 120, 234, 100, 101, 142, 123, 137, 50, 36, 93, 205, 147, 177, 187, 132, 207, 213, 215, 192, 58]
 right_cheek_lmk = [349, 348, 347, 346, 345, 329, 447, 454, 330, 371, 266, 280, 352, 323, 366, 425, 376, 411, 401, 427, 361, 433, 435, 416, 288]
 
+
+mouth_lmk = [61, 185, 40, 39, 37, 0, 267, 270, 409, 291, 375, 321, 405, 314, 17, 84, 181, 91, 146, 61]
+left_eye_lmk = [33, 7, 163, 144, 145, 153, 154, 155, 133, 246, 161, 160, 159, 158, 157, 173, 133]
+right_eye_lmk = [263, 249, 390, 373, 374, 380, 381, 382, 362, 466, 388, 387, 386, 385, 384, 398, 362]
+
 mp_face_mesh = mp.solutions.face_mesh
 
 def full_roi(frame, frame_height, frame_width):
@@ -58,12 +63,22 @@ def facial_roi(frame, frame_height, frame_width):
                 # Get the list of facial landmarks
                 lmk_lst = np.array([np.array([int(pt.x*frame_width), int(pt.y*frame_height)]) for pt in face_landmarks.landmark])
 
-                # Create a Convex Hull with the landmarks
+                # Create a Convex Hull with the facial landmarks
                 hull = cv2.convexHull(lmk_lst)
 
                 # Create the mask using the Convex Hull
                 mask = np.zeros((frame_height, frame_width), np.uint8)
                 mask = cv2.fillConvexPoly(mask, hull, 255)
+
+                # Create a Convex hull for the eyes and mouth
+                mouth_hull = cv2.convexHull(lmk_lst[mouth_lmk])
+                left_eye_hull = cv2.convexHull(lmk_lst[left_eye_lmk])
+                right_eye_hull = cv2.convexHull(lmk_lst[right_eye_lmk])
+
+                # make the area in the mask for the eyes and mouth as 0
+                mask = cv2.fillConvexPoly(mask, mouth_hull, 0)
+                mask = cv2.fillConvexPoly(mask, left_eye_hull, 0)
+                mask = cv2.fillConvexPoly(mask, right_eye_hull, 0)
 
                 return mask
         else:

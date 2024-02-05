@@ -74,9 +74,9 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
                                         'gAvg': gAvg,
                                         'bAvg': bAvg}
 
-                    frame_copy, [rAvg, gAvg, bAvg] = filter_func(frame, filter_params)
+                    frame_copy, [rAvg, gAvg, bAvg] = filter_func(frame.copy(), filter_params)
                 elif filter_temporal=='timeblur_sliding':
-                    frame_queue.append(frame)
+                    frame_queue.append(frame.copy())
 
                     if len(frame_queue) > filter_params['window_size']:
                         frame_queue.pop(0)
@@ -84,7 +84,7 @@ def apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func
                     frame_copy = filter_func(frame_queue, filter_params)
                 else:
                     # apply filter
-                    frame_copy = filter_func(frame, filter_params)
+                    frame_copy = filter_func(frame.copy(), filter_params)
 
                 # extract the mask area from the edited frame
                 face_edited = cv2.bitwise_and(frame_copy, frame_copy, mask=roi_mask)
