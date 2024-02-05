@@ -21,7 +21,6 @@ def compute_errors(path1, path2, metric, notebook_mode=False):
     Returns:
         error (float): Error between the two videos.
     """
-    print(path2)
     cap1 = cv2.VideoCapture(path1)
     cap2 = cv2.VideoCapture(path2)
     
