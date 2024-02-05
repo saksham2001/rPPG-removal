@@ -80,7 +80,7 @@ filter_params = {'amount': 0.05}
 # Apply filter
 apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func, filter_params)
 ```
-For more detailed demostrations please refer to the [`pyRemoval Demo.ipynb`](https://github.com/saksham2001/rPPG-removal/blob/main/pyRemoval_Demo.ipynb) notebook
+For very detailed demostrations please refer to the [`pyRemoval Demo.ipynb`](https://github.com/saksham2001/rPPG-removal/blob/main/pyRemoval_Demo.ipynb) notebook.
 
 ## Files
 Files that can be used to process the videos from the LGI-PPGI dataset are:
