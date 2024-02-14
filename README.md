@@ -92,7 +92,7 @@ filter_params = {'amount': 0.05}
 # Apply filter
 apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func, filter_params)
 ```
-For very detailed demostrations please refer to the [`pyRemoval_Demo.ipynb`](https://github.com/saksham2001/rPPG-removal/blob/main/pyRemoval_Demo.ipynb) notebook.
+For very detailed demostrations please refer to the [`pyRemoval_Demo.ipynb`](https://github.com/saksham2001/rPPG-removal/blob/main/pyRemoval_Demo.ipynb) notebook. This notebook also details the expected runtime for processing and evaluation using the package.
 
 ## Files
 Files that can be used to process the videos from the LGI-PPGI dataset are:
@@ -101,10 +101,12 @@ Files that can be used to process the videos from the LGI-PPGI dataset are:
 * [`lgi_bulk_rppg_estimate.py`](https://github.com/saksham2001/rPPG-removal/blob/main/lgi_bulk_rppg_estimate.py): This file allows estimating the rPPG signal from the images obtained after applying the filters for all the activities.
 * [`bulk_fps_measure.py`](https://github.com/saksham2001/rPPG-removal/blob/main/bulk_fps_measure.py): This file allows measuring the FPS for applying all the filters.
 
-**Note:** We have tried to make the code agnostic to the dataset. Hence, the code can be used to process any data which is available in the form of videos.
+**Note:** The code has been designed to be dataset-agnostic, allowing it to process videos from any source.
 
 ## Dataset
-In this paper we use the LGI-PPGI dataset. The dataset can be downloaded from [https://github.com/partofthestars/LGI-PPGI-DB](https://github.com/partofthestars/LGI-PPGI-DB). 
+In the paper we use the LGI-PPGI dataset. The dataset can be downloaded from [https://github.com/partofthestars/LGI-PPGI-DB](https://github.com/partofthestars/LGI-PPGI-DB). 
+
+A small video is provided in [data/sample_video.avi](https://github.com/saksham2001/rPPG-removal/data/sample_video.avi) to demo the software. Please note that this video is only provided for the demostation of the pyRemoval package and there is no PPG ground truth data available for this video.
 
 ## Building upon the code
 The code is designed to be modular and easy to build upon. The code can be extended to add new filters, test with different regions of interest, and test with new metrics to measure the loss of information. The code can also be extended to process other datasets. We have provided boilerplate code to add new filters, ROIs and metrics.
