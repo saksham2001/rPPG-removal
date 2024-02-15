@@ -106,7 +106,7 @@ Files that can be used to process the videos from the LGI-PPGI dataset are:
 ## Dataset
 In the paper we use the LGI-PPGI dataset. The dataset can be downloaded from [https://github.com/partofthestars/LGI-PPGI-DB](https://github.com/partofthestars/LGI-PPGI-DB). 
 
-A small video is provided in [data/sample_video.avi](https://github.com/saksham2001/rPPG-removal/data/sample_video.avi) to demo the software. Please note that this video is only provided for the demostation of the pyRemoval package and there is no PPG ground truth data available for this video.
+A small video from the LGI-PPGI dataset is provided in [data/sample_video.avi](https://github.com/saksham2001/rPPG-removal/data/sample_video.avi) to demo the software.
 
 ## Building upon the code
 The code is designed to be modular and easy to build upon. The code can be extended to add new filters, test with different regions of interest, and test with new metrics to measure the loss of information. The code can also be extended to process other datasets. We have provided boilerplate code to add new filters, ROIs and metrics.
