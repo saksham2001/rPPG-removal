@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyVHR.datasets package &#8212; pyVHR  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyVHR.extraction package" href="pyVHR.extraction.html" />
+    <link rel="prev" title="pyVHR.analysis package" href="pyVHR.analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">pyVHR</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="modules.html">
+  pyVHR
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="pyVHR.html">
+   pyVHR package
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyVHR.BPM.html">
+     pyVHR.BPM package
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyVHR.BVP.html">
+     pyVHR.BVP package
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyVHR.analysis.html">
+     pyVHR.analysis package
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     pyVHR.datasets package
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyVHR.extraction.html">
+     pyVHR.extraction package
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pyVHR.plot.html">
+     pyVHR.plot package
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.cohface">
+   pyVHR.datasets.cohface module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.dataset">
+   pyVHR.datasets.dataset module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.lgi_ppgi">
+   pyVHR.datasets.lgi_ppgi module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.mahnob">
+   pyVHR.datasets.mahnob module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.pure">
+   pyVHR.datasets.pure module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.sample">
+   pyVHR.datasets.sample module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.ubfc1">
+   pyVHR.datasets.ubfc1 module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-pyVHR.datasets.ubfc2">
+   pyVHR.datasets.ubfc2 module
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="pyvhr-datasets-package">
+<h1>pyVHR.datasets package<a class="headerlink" href="#pyvhr-datasets-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyVHR.datasets.cohface">
+<span id="pyvhr-datasets-cohface-module"></span><h2>pyVHR.datasets.cohface module<a class="headerlink" href="#module-pyVHR.datasets.cohface" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.cohface.COHFACE">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.cohface.</span></span><span class="sig-name descname"><span class="pre">COHFACE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.cohface.COHFACE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cohface Dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.cohface.COHFACE.readSigfile">
+<span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.cohface.COHFACE.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load signal from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <a class="reference internal" href="pyVHR.BPM.html#pyVHR.BPM.BPM.BVPsignal" title="pyVHR.BPM.BPM.BVPsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.BPM.BPM.BVPsignal</span></code></a> object that can be used to extract BPM signal from ground truth BVP signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyVHR.datasets.dataset">
+<span id="pyvhr-datasets-dataset-module"></span><h2>pyVHR.datasets.dataset module<a class="headerlink" href="#module-pyVHR.datasets.dataset" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.dataset.Dataset">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.dataset.</span></span><span class="sig-name descname"><span class="pre">Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.dataset.Dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the abstract class used for creating a new Dataset Class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.dataset.Dataset.getSigFilename">
+<span class="sig-name descname"><span class="pre">getSigFilename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videoIdx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.dataset.Dataset.getSigFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Signal file name given the progressive index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.dataset.Dataset.getVideoFilename">
+<span class="sig-name descname"><span class="pre">getVideoFilename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videoIdx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.dataset.Dataset.getVideoFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get video file name given the progressive index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.dataset.Dataset.loadFilenames">
+<span class="sig-name descname"><span class="pre">loadFilenames</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.dataset.Dataset.loadFilenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load dataset file names: define vars videoFilenames and BVPFilenames.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.dataset.Dataset.readSigfile">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.dataset.Dataset.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load signal from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <a class="reference internal" href="pyVHR.BPM.html#pyVHR.BPM.BPM.BVPsignal" title="pyVHR.BPM.BPM.BVPsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.BPM.BPM.BVPsignal</span></code></a> object that can be used to extract BPM signal from ground truth BVP signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyVHR.datasets.dataset.datasetFactory">
+<span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.dataset.</span></span><span class="sig-name descname"><span class="pre">datasetFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasetName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.dataset.datasetFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used for creating a new istance of a dataset Class (that
+innherit <a class="reference internal" href="#pyVHR.datasets.dataset.Dataset" title="pyVHR.datasets.dataset.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.datasets.dataset.Dataset</span></code></a> ).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datasetName</strong> (<em>str</em>) – name of the dataset Class.</p></li>
+<li><p><strong>videodataDIR</strong> (<em>str</em>) – path of the video data directory.</p></li>
+<li><p><strong>BVPdataDIR</strong> (<em>str</em>) – path of the ground truth BVP data directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyVHR.datasets.lgi_ppgi">
+<span id="pyvhr-datasets-lgi-ppgi-module"></span><h2>pyVHR.datasets.lgi_ppgi module<a class="headerlink" href="#module-pyVHR.datasets.lgi_ppgi" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.lgi_ppgi.LGI_PPGI">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.lgi_ppgi.</span></span><span class="sig-name descname"><span class="pre">LGI_PPGI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.lgi_ppgi.LGI_PPGI" title="Permalink to this definition">¶</a></dt>
+<dd><p>LGI-PPGI Dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.lgi_ppgi.LGI_PPGI.readSigfile">
+<span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.lgi_ppgi.LGI_PPGI.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load signal from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <a class="reference internal" href="pyVHR.BPM.html#pyVHR.BPM.BPM.BVPsignal" title="pyVHR.BPM.BPM.BVPsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.BPM.BPM.BVPsignal</span></code></a> object that can be used to extract BPM signal from ground truth BVP signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyVHR.datasets.mahnob">
+<span id="pyvhr-datasets-mahnob-module"></span><h2>pyVHR.datasets.mahnob module<a class="headerlink" href="#module-pyVHR.datasets.mahnob" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.mahnob.MAHNOB">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.mahnob.</span></span><span class="sig-name descname"><span class="pre">MAHNOB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.mahnob.MAHNOB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mahnob Dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.mahnob.MAHNOB.readSigfile">
+<span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.mahnob.MAHNOB.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load ECG signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a pyVHR.utils.ecg.ECGsignal object that can be used to extract ground truth BPM signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyVHR.datasets.pure">
+<span id="pyvhr-datasets-pure-module"></span><h2>pyVHR.datasets.pure module<a class="headerlink" href="#module-pyVHR.datasets.pure" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.pure.PURE">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.pure.</span></span><span class="sig-name descname"><span class="pre">PURE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.pure.PURE" title="Permalink to this definition">¶</a></dt>
+<dd><p>PURE Dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.pure.PURE.loadFilenames">
+<span class="sig-name descname"><span class="pre">loadFilenames</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.pure.PURE.loadFilenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load dataset file names and directories of frames:
+define vars videoFilenames and BVPFilenames</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.pure.PURE.readSigfile">
+<span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.pure.PURE.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load signal from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <a class="reference internal" href="pyVHR.BPM.html#pyVHR.BPM.BPM.BVPsignal" title="pyVHR.BPM.BPM.BVPsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.BPM.BPM.BVPsignal</span></code></a> object that can be used to extract BPM signal from ground truth BVP signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyVHR.datasets.sample">
+<span id="pyvhr-datasets-sample-module"></span><h2>pyVHR.datasets.sample module<a class="headerlink" href="#module-pyVHR.datasets.sample" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.sample.SAMPLE">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.sample.</span></span><span class="sig-name descname"><span class="pre">SAMPLE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.sample.SAMPLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample Dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.sample.SAMPLE.readSigfile">
+<span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.sample.SAMPLE.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load signal from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <a class="reference internal" href="pyVHR.BPM.html#pyVHR.BPM.BPM.BVPsignal" title="pyVHR.BPM.BPM.BVPsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.BPM.BPM.BVPsignal</span></code></a> object that can be used to extract BPM signal from ground truth BVP signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyVHR.datasets.ubfc1">
+<span id="pyvhr-datasets-ubfc1-module"></span><h2>pyVHR.datasets.ubfc1 module<a class="headerlink" href="#module-pyVHR.datasets.ubfc1" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.ubfc1.UBFC1">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.ubfc1.</span></span><span class="sig-name descname"><span class="pre">UBFC1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.ubfc1.UBFC1" title="Permalink to this definition">¶</a></dt>
+<dd><p>UBFC1 Dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.ubfc1.UBFC1.readSigfile">
+<span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.ubfc1.UBFC1.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load signal from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <a class="reference internal" href="pyVHR.BPM.html#pyVHR.BPM.BPM.BVPsignal" title="pyVHR.BPM.BPM.BVPsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.BPM.BPM.BVPsignal</span></code></a> object that can be used to extract BPM signal from ground truth BVP signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyVHR.datasets.ubfc2">
+<span id="pyvhr-datasets-ubfc2-module"></span><h2>pyVHR.datasets.ubfc2 module<a class="headerlink" href="#module-pyVHR.datasets.ubfc2" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyVHR.datasets.ubfc2.UBFC2">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyVHR.datasets.ubfc2.</span></span><span class="sig-name descname"><span class="pre">UBFC2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">videodataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BVPdataDIR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.ubfc2.UBFC2" title="Permalink to this definition">¶</a></dt>
+<dd><p>UBFC2 Dataset</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyVHR.datasets.ubfc2.UBFC2.readSigfile">
+<span class="sig-name descname"><span class="pre">readSigfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyVHR.datasets.ubfc2.UBFC2.readSigfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load signal from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <a class="reference internal" href="pyVHR.BPM.html#pyVHR.BPM.BPM.BVPsignal" title="pyVHR.BPM.BPM.BVPsignal"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyVHR.BPM.BPM.BVPsignal</span></code></a> object that can be used to extract BPM signal from ground truth BVP signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p>..Module contents
+..—————
+..
+.. automodule:: pyVHR.datasets
+..   :members:
+..   :undoc-members:
+..   :show-inheritance:</p>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+    <a class='left-prev' id="prev-link" href="pyVHR.analysis.html" title="previous page">pyVHR.analysis package</a>
+    <a class='right-next' id="next-link" href="pyVHR.extraction.html" title="next page">pyVHR.extraction package</a>
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright .<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

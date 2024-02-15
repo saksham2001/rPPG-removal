@@ -1,0 +1,23 @@
+pyVHR package
+=============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pyVHR.BPM
+   pyVHR.BVP
+   pyVHR.analysis
+   pyVHR.datasets
+   pyVHR.extraction
+   pyVHR.plot
+
+Module contents
+---------------
+
+.. automodule:: pyVHR
+   :members:
+   :undoc-members:
+   :show-inheritance:
