@@ -75,19 +75,19 @@ python3 -m pip install -r requirements.txt
 **Note** Please ensure that you do not have the pyVHR python package installed. If you do, please uninstall it using `pip uninstall pyVHR` and use the modified version provided in this repository.
 
 ## Basic usage
-Run the following code to process a video using one of the filters. The processing time varies with based on the filter, the size of the video and the hardware used. The expected runtime for the following code is around 5 minutes.
+Run the following code to process a video using one of the filters. The processing time varies with based on the filter, the size of the video and the hardware used. The expected runtime for the following code is around 20 seconds.
 ```python
 from pyRemoval.processing.converter import apply_filter
 from pyRemoval.processing.filters import peppernoise
 from pyRemoval.processing.extract import facial_roi
 
 # Define parameters
-input_path = '/path/to/input/video.avi'
-output_path = '/path/to/output/video.avi'
+input_path = 'data/sample_video.avi'
+output_path = 'data/sample_video.avi'
 filter_func = peppernoise
 filter_temporal = False
 roi_func = facial_roi
-filter_params = {'amount': 0.05}
+filter_params = {'amount': 0.01}
 
 # Apply filter
 apply_filter(input_path, output_path, filter_func, filter_temporal, roi_func, filter_params)
