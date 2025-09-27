@@ -121,7 +121,7 @@ For detailed examples of the following, refer to the [`pyRemoval_Demo.ipynb`](ht
 
 ## Citation
 If you use any of the data or resources provided on this page in any of your publications we ask you to cite the following work.
-```Bhutani, S., Elgendi, M., & Menon, C. (2025). Preserving privacy and video quality through remote physiological signal removal. Nature Communications Engineering, 4(1), 66.```
+```Bhutani, S., Elgendi, M., & Menon, C. (2025). Preserving privacy and video quality through remote physiological signal removal. Nature Communications Engineering, 4(1), 66. DOI: 10.1038/s44172-025-00363-z```
 
 ## Contact
 If you have any questions, please feel free to contact us though email: Saksham Bhutani (sakshambhutani2001@gmail.com) or Mohamed Elgendi (moe.elgendi@hest.ethz.ch)
