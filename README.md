@@ -119,9 +119,9 @@ The code is designed to be modular and easy to build upon. The code can be exten
 
 For detailed examples of the following, refer to the [`pyRemoval_Demo.ipynb`](https://github.com/saksham2001/rPPG-removal/blob/main/pyRemoval_Demo.ipynb) notebook.
 
-<!-- ## Citation
+## Citation
 If you use any of the data or resources provided on this page in any of your publications we ask you to cite the following work.
-```add citation here``` -->
+```Bhutani, S., Elgendi, M., & Menon, C. (2025). Preserving privacy and video quality through remote physiological signal removal. Nature Communications Engineering, 4(1), 66.```
 
 ## Contact
 If you have any questions, please feel free to contact us though email: Saksham Bhutani (sakshambhutani2001@gmail.com) or Mohamed Elgendi (moe.elgendi@hest.ethz.ch)
